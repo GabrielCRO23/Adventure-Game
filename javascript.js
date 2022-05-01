@@ -1,5 +1,6 @@
 const gameBoard = (() => { 
 
+   
     const WINNING_COMBINATIONS = [
         [0, 1, 2],
         [3, 4, 5], 
@@ -15,11 +16,13 @@ const gameBoard = (() => {
         return {name, symbol, bot, turn}
     }
 
+   
+
     player1 = playerFactory('player 1', 'X', false, true)
     player2 = playerFactory('player 2', 'O', false, false)
 
     const cellElements = document.querySelectorAll('[data-cell]')
-    const currentClass = playerFactory.symbol
+    
     
     function swapTurns() {
         if (player1.turn == true) {
@@ -31,14 +34,22 @@ const gameBoard = (() => {
         }
     }
 
-    
-        function checkWins(currentClass) {
-            return WINNING_COMBINATIONS.some(combination => {
-                return combination.every(index => {
-                    return cellElements[index].classList.contains(currentClass)
-                })
+
+
+    function checkWins(currentClass) {
+        return WINNING_COMBINATIONS.some(combination => {
+            return combination.every(index => {
+                return cellElements[index].classList.contains(currentClass)
             })
-        }
+        })
+    }
+    
+    
+       // function isDraw() {
+        //    return [...cellElements].every(cellElements => {
+         //       return cellElements.classList.contains(playerFactory.symbol)
+        //    })
+      //  }
 
         function endGameCheck() {
             if (checkWins(currentClass) == true) {
@@ -49,13 +60,19 @@ const gameBoard = (() => {
     cellElements.forEach ( cellElements => {
         cellElements.addEventListener('click', function(){
             if (player1.turn == true) {
+                currentClass = player1.symbol
                 cellElements.textContent = player1.symbol
-                cellElements.classList.add(currentClass)
+                cellElements.classList.add('X')
+                
+                
                 swapTurns()
                 endGameCheck()
             } else if (player2.turn == true) {
+                currentClass = player2.symbol
                 cellElements.textContent = player2.symbol
-                cellElements.classList.add(currentClass)
+                cellElements.classList.add('O')
+
+                
                 swapTurns()
                 endGameCheck()
             }
