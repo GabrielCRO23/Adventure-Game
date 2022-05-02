@@ -1,15 +1,10 @@
-@font-face {
-    font-family: Dokdo;
-    src: url(Dokdo-Regular.ttf); /* Korean font */
-  }
-
 
 body {
     display: flex;
     justify-content: center;
     flex-direction: column;
     margin: 0;
-    font-family: Determination Sans, Dokdo;
+    
     color: white;
     font-size: 2em;
     background-color: black;
@@ -17,15 +12,8 @@ body {
 
 h1{
     text-align: center;
-}
-
-.credits {
-    text-align: center;
-    font-size: 1em;
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    
+    font-family: Determination Sans;
 }
 
 .gameBoard {
