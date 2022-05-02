@@ -8,24 +8,28 @@ const gameBoard = (() => {
     const gameBoard1 = document.querySelector('#gameBoard1')
     const startingScreen = document.querySelector('#startingScreen')
     const initButton = document.querySelector('#initButton')
+    const startAnimation = document.querySelector('#animate')
 
     initButton.addEventListener('click',function(){
-        startingScreen.style.display = 'grid'
+        startAnimation.style.display = ''
         initButton.style.display = "none"
         gameStart = true
         loadingHeader();
         playGameMusic()
-        console.log(gameStart)
+        
     })
 
     function playGameMusic() {
         let gameAudio = new Audio('game.mp3')
         gameAudio.play()
+        gameAudio.setAttribute("id", "gameAudio")
+        gameAudio.loop = true
     }
 
     function playMenuSound() {
         let menuAudio = new Audio('menu.wav');
         menuAudio.play();
+        menuAudio.setAttribute("id", "menuAudio")
       }
     
     document.onkeydown = function (event) {
@@ -52,13 +56,31 @@ const gameBoard = (() => {
         );
 
        
-       
-  
+        function resolveAfter12Seconds() {
+            return new Promise(resolve => {
+              setTimeout(() => {
+                resolve('resolved');
+              }, 12000);
+            });
+          }
+          
+          async function asyncCall() {
+            console.log('calling');
+            await resolveAfter12Seconds();
+            console.log('called')
+            startingScreen.style.display = "grid"
+            startingScreen.classList.add('transition')
+          }
+          
+          
+          
+
+
 
 
 function loadingHeader() {
    
-        
+    asyncCall();
         
 var header = document.getElementById('animate');
 
