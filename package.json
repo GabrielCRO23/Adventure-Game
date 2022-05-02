@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "typewriter-effect": "^2.18.2",
+    "type": "module"
+  }
+}

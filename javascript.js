@@ -1,25 +1,49 @@
+
+
 const gameBoard = (() => { 
+    let gameStart = false
     
     const startGame = document.querySelector('#startGame')
     const options = document.querySelector('#options')
     const gameBoard1 = document.querySelector('#gameBoard1')
     const startingScreen = document.querySelector('#startingScreen')
+    const initButton = document.querySelector('#initButton')
+
+    initButton.addEventListener('click',function(){
+        startingScreen.style.display = 'grid'
+        initButton.style.display = "none"
+        gameStart = true
+        loadingHeader();
+        playGameMusic()
+        console.log(gameStart)
+    })
+
+    function playGameMusic() {
+        let gameAudio = new Audio('game.mp3')
+        gameAudio.play()
+    }
+
+    function playMenuSound() {
+        let menuAudio = new Audio('menu.wav');
+        menuAudio.play();
+      }
     
     document.onkeydown = function (event) {
         switch (event.keyCode) {
            case 38:
               startGame.focus();
+              playMenuSound();
               break;
            
            case 40:
               options.focus();
+              playMenuSound();
               break;
         }
      };
-
     
 
-        ['click','keypress'].forEach( evt => 
+        ['click','keypress',].forEach( evt => 
             startGame.addEventListener(evt, function(){
                 gameBoard1.style.display = 'grid';
                 startingScreen.style.display = 'none';
@@ -28,22 +52,33 @@ const gameBoard = (() => {
         );
 
        
+       
+  
+
+
+function loadingHeader() {
+   
         
+        
+var header = document.getElementById('animate');
 
-var messageArray = ['YOU ARE ABOUT TO EMBARK ON A JOURNEY...']
-var textPosition = 0;
-var speed = 75;
+var typewriter = new Typewriter(header, {
+    
+});
 
-typeWriter = () => {
-    document.querySelector("#animate").
-    innerHTML = messageArray[0].substring(0, textPosition);
-    if (textPosition++ != messageArray[0].length)
-    setTimeout(typeWriter, speed)
+typewriter.typeString('YOU ARE ABOUT TO GO')
+.pauseFor(250)
+.start()
+.deleteChars(2)
+.typeString('EMBARK ON AN ADVENTURE...')
+.deleteChars(15)
+.typeString('A JOURNEY...')
+.changeCursor(' ')
+
 }
 
-window.addEventListener("load", typeWriter)
-    
-    
+
+  
    
     const WINNING_COMBINATIONS = [
         [0, 1, 2],

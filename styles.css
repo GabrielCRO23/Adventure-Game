@@ -52,22 +52,25 @@ h1{
     cursor: pointer;
 }
 
-#startGame, #options {
+#startGame, #options, #initButton {
     display: flex;
     justify-content: center;
     background: black;
     align-items: center;
     font-size: 1.5em;
     color: white;
-    font-family: Determination Mono;
-    width: 30vw;
-    height: 15vh;
+    font-family: Determination Mono, Dokdo;
+    width: auto;
+    height: auto;
+    margin: 50px;
     border: none;
     cursor: crosshair;
 }
 
-#startGame:hover, #options:hover, #startGame:focus, #options:focus {
-    cursor: pointer;
+
+
+#startGame:hover, #options:hover, #startGame:focus, #options:focus, #initButton:hover, #initButton:focus {
+    cursor: crosshair;
     transform: scale(1.0);
     box-shadow: 0 0 20px 1px;
 }
@@ -100,5 +103,9 @@ h1{
     cursor: pointer;
     transform: scale(1.0);
     box-shadow: 0 0 20px 1px;
+  }
+
+  #startingScreen{
+      display:none;
   }
 
