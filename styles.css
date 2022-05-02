@@ -3,6 +3,16 @@
     src: url(Dokdo-Regular.ttf); /* Korean font */
   }
 
+@font-face {
+    font-family: Determination Sans;
+    src: url(DeterminationSansWeb.ttf)
+}
+
+@font-face {
+    font-family: Determination Mono;
+    src: url(DeterminationMonoWeb.ttf)
+}
+
 
 body {
     display: flex;
