@@ -27,11 +27,11 @@ const gameBoard = (() => {
     const PAPYRUS = document.querySelector('#papyrus')
     const UNDYNE = document.querySelector('#undyne')
     console.log(player1.character)
-    TORIEL.addEventListener('click', function(){
-        player1.character = 'Toriel'
-        console.log(player1.character)
-    })
-
+   // TORIEL.addEventListener('click', function(){
+    //    player1.character = 'Toriel'
+   //     console.log(player1.character)
+  //  })
+  
     PAPYRUS.addEventListener('click', function(){
         player1.character = 'Papyrus'
         console.log(player1.character)
@@ -79,6 +79,46 @@ const gameBoard = (() => {
               break;
         }
      };
+
+     
+
+     class MoveHandler {
+        constructor() {
+          //Get the first element of the list and set it as the current
+          //TODO: if the DOM doesn't get updated it is also possible to store the .move HTML elements within this instance
+          this.current = document.getElementsByClassName("move")[0];
+          
+          //initially set the first as focus
+          this.current.focus();
+          
+          //event listener on the window for arrow keys
+          window.addEventListener("keydown", this.move.bind(this));
+        }
+      
+        move(e) {
+        
+          //update the current according to the arrow keys.
+          //Check to see if the current has a previous or next otherwise do nothing.
+        
+          switch (e.keyCode) {
+            case 39:
+              if (this.current.nextElementSibling === null) return;
+              this.current = this.current.nextElementSibling;
+              playMenuSound();
+              break;
+            case 37:
+              if (this.current.previousElementSibling === null) return;
+              this.current = this.current.previousElementSibling;
+              playMenuSound();
+              break;
+            default:
+              return;
+          }
+          this.current.focus();
+        }
+      }
+      new MoveHandler();
+
 /*
      ['click','keypress',].forEach( evt => 
         CHARACTER1.addEventListener(evt, function(){
@@ -103,12 +143,33 @@ const gameBoard = (() => {
             })
         );
 
+        ['click','keypress',].forEach( evt => 
+            TORIEL.addEventListener(evt, function(){
+                player1.character = 'Toriel'
+                console.log(player1.character)
+            })
+        );
+
+        ['click','keypress',].forEach( evt => 
+            PAPYRUS.addEventListener(evt, function(){
+                player1.character = 'Papyrus'
+                console.log(player1.character)
+            })
+        );
+
+        ['click','keypress',].forEach( evt => 
+            UNDYNE.addEventListener(evt, function(){
+                player1.character = 'Undyne'
+                console.log(player1.character)
+            })
+        );
+
        
         function resolveAfter12Seconds() {
             return new Promise(resolve => {
               setTimeout(() => {
                 resolve('resolved');
-              }, 12000);
+              }, 2000);
             });
           }
           
