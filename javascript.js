@@ -7,7 +7,7 @@ const gameBoard = (() => {
 
    
 
-    player1 = playerFactory('player 1', 'X', false, true,)
+    player1 = playerFactory('player 1', 'X', false, true, null)
     player2 = playerFactory('player 2', 'O', false, false, "Tin'pu")
     
     
