@@ -63,7 +63,7 @@ h1{
     cursor: crosshair;
 }
 
-#startGame, #options, #initButton {
+#startGame, #options, #initButton, #character1, #character2 {
     display: flex;
     justify-content: center;
     background: black;
@@ -76,19 +76,29 @@ h1{
     margin: 50px;
     border: none;
     cursor: crosshair;
+    border-radius: 4px;
 }
 
 
 
-#startGame:hover, #options:hover, #startGame:focus, #options:focus, #initButton:hover, #initButton:focus {
+#startGame:hover, #options:hover, #startGame:focus, #options:focus, #initButton:hover, #initButton:focus, #character1:hover, #character1:focus, #character2:hover, #character1:focus {
     cursor: crosshair;
     transform: scale(1.0);
     box-shadow: 0 0 20px 1px;
 }
 
 .info {
-    font-family:Determination Mono;
+    font-family: Determination Mono;
     text-align: center;
+}
+
+.info2 {
+    font-family: Determination Mono;
+    justify-content: center;
+}
+
+#charactercontainer {
+    display: none;
 }
 
 .blink {
@@ -110,6 +120,24 @@ h1{
     align-items: center;
 }
 
+.characters {
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.characterstext {
+    display: flex;
+    justify-content: space-around;
+}
+
+#toriel:hover, #toriel:focus, #papyrus:hover, #papyrus:focus, #undyne:hover, #undyne:focus  {
+    cursor: crosshair;
+    border-radius: 8px;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px 1px yellow;
+}
+
 .cell:hover {
     cursor: pointer;
     transform: scale(1.0);
@@ -126,6 +154,16 @@ h1{
     animation-duration: 3s;
     transition-timing-function: linear;
   }
+
+  #characterSelection {
+    display: none;
+}
+
+#characterSelection.transition {
+    animation-name: FadeIn;
+    animation-duration: 3s;
+    transition-timing-function: linear;
+}
 
   
   @keyframes FadeIn {

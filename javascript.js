@@ -1,14 +1,46 @@
 
 
 const gameBoard = (() => { 
-    let gameStart = false
+    const playerFactory = (name, symbol, bot, turn, character) => {
+        return {name, symbol, bot, turn, character}
+    }
+
+   
+
+    player1 = playerFactory('player 1', 'X', false, true,)
+    player2 = playerFactory('player 2', 'O', false, false, "Tin'pu")
     
+    
+    let gameStart = false
+
     const startGame = document.querySelector('#startGame')
     const options = document.querySelector('#options')
     const gameBoard1 = document.querySelector('#gameBoard1')
     const startingScreen = document.querySelector('#startingScreen')
     const initButton = document.querySelector('#initButton')
     const startAnimation = document.querySelector('#animate')
+    const characterSelection = document.querySelector('#characterSelection')
+    const instructions = document.querySelector('#info2')
+ //   const CHARACTER1 = document.querySelector('#character1')
+  //  const CHARACTER2 = document.querySelector('#character2')
+    const TORIEL = document.querySelector('#toriel')
+    const PAPYRUS = document.querySelector('#papyrus')
+    const UNDYNE = document.querySelector('#undyne')
+    console.log(player1.character)
+    TORIEL.addEventListener('click', function(){
+        player1.character = 'Toriel'
+        console.log(player1.character)
+    })
+
+    PAPYRUS.addEventListener('click', function(){
+        player1.character = 'Papyrus'
+        console.log(player1.character)
+    })
+
+    UNDYNE.addEventListener('click', function(){
+        player1.character = 'Undyne'
+        console.log(player1.character)
+    })
 
     initButton.addEventListener('click',function(){
         startAnimation.style.display = ''
@@ -36,22 +68,38 @@ const gameBoard = (() => {
         switch (event.keyCode) {
            case 38:
               startGame.focus();
+             // CHARACTER1.focus();
               playMenuSound();
               break;
            
            case 40:
               options.focus();
+             // CHARACTER2.focus();
               playMenuSound();
               break;
         }
      };
-    
+/*
+     ['click','keypress',].forEach( evt => 
+        CHARACTER1.addEventListener(evt, function(){
+          console.log('1')
+        })
+    );
+
+    ['click','keypress',].forEach( evt => 
+        CHARACTER2.addEventListener(evt, function(){
+          console.log('2')
+        })
+    );
+ */   
+      
 
         ['click','keypress',].forEach( evt => 
             startGame.addEventListener(evt, function(){
-                gameBoard1.style.display = 'grid';
+               // gameBoard1.style.display = 'grid';
                 startingScreen.style.display = 'none';
-
+                startAnimation.style.display = 'none';
+                loadingCharacters()
             })
         );
 
@@ -71,9 +119,42 @@ const gameBoard = (() => {
             startingScreen.style.display = "grid"
             startingScreen.classList.add('transition')
           }
+
+          function resolveAfter3Seconds() {
+            return new Promise(resolve => {
+              setTimeout(() => {
+                resolve('resolved');
+              }, 3500);
+            });
+          }
+          
+          async function asyncCall2() {
+            console.log('calling');
+            await resolveAfter3Seconds();
+            console.log('called')
+            characterSelection.style.display = 'grid'
+            characterSelection.classList.add('transition')
+            
+          }
           
           
-          
+function loadingCharacters() {
+
+    asyncCall2()
+
+    instructions.style.display = 'flex'
+    startAnimation.style.display = ''
+    var header = document.getElementById('animate');
+
+var typewriter = new Typewriter(header, {
+    
+});
+
+typewriter.typeString('CHOOSE YOUR CHARACTER')
+.pauseFor(250)
+.start()
+.changeCursor(' ')
+}         
 
 
 
@@ -113,14 +194,7 @@ typewriter.typeString('YOU ARE ABOUT TO GO')
         [2, 5, 8]
     ]
 
-    const playerFactory = (name, symbol, bot, turn) => {
-        return {name, symbol, bot, turn}
-    }
-
-   
-
-    player1 = playerFactory('player 1', 'X', false, true)
-    player2 = playerFactory('player 2', 'O', false, false)
+    
 
     const cellElements = document.querySelectorAll('.cell')
     
