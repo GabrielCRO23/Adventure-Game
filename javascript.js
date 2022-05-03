@@ -258,7 +258,7 @@ function characterDialogue() {
             
         
         var typewriter = new Typewriter(header, {
-            delay: 75
+            delay: 70
         });
 
         
@@ -267,7 +267,7 @@ function characterDialogue() {
         .pauseFor(10000)
         .typeString(`Hello. You seem rather weak and frail. It's alright, I've trained people like you before. Just to be clear: I make the rules around here.`)
         .start()
-        characterStory();
+        
                      
     } else if (player1.character === 'Papyrus'){
         var header = document.getElementById('papyrusdialogue');
@@ -275,16 +275,19 @@ function characterDialogue() {
             
         
         var typewriter = new Typewriter(header, {
-            delay: 75
+            delay: 70
         });
 
         
         typewriter.typeString('')
         .changeCursor(' ')
-        .pauseFor(15500)
-        .typeString(`HEY! I'm Papyrus, nice to meet you! You're coming with me?! That's great, and don't worry I don't bite!! Just joking, sometimes I bite! Kidding! Aren't I the worst?`)
+        .pauseFor(16575)
+        
+        .typeString(`HEY! I'm Papyrus, nice to meet you! You're coming with me?! That's great, and don't worry I don't bite!! Just joking, sometimes I bite!`)
+        .pauseFor(1000)
+        .typeString(` Kidding again! Aren't I the worst?`)
         .start()
-        characterStory();
+        
     } 
 }
 
