@@ -26,6 +26,13 @@ const gameBoard = (() => {
     const TORIEL = document.querySelector('#toriel')
     const PAPYRUS = document.querySelector('#papyrus')
     const UNDYNE = document.querySelector('#undyne')
+    const torielPicture = document.querySelector('#toriel2')
+    const papyrusPicture = document.querySelector('#papyrus2')
+    const undynePicture = document.querySelector('#undyne2')
+    const playerCharacterIcon = document.querySelector('#playerCharacter')
+    const undyneDialogue = document.querySelector('#undynedialogue')
+    const papyrusDialogue = document.querySelector('#papyrusdialogue')
+    const torielDialogue = document.querySelector('#torieldialogue')
     console.log(player1.character)
    // TORIEL.addEventListener('click', function(){
     //    player1.character = 'Toriel'
@@ -38,10 +45,18 @@ const gameBoard = (() => {
         startAnimation.style.display = ''
         initButton.style.display = "none"
         gameStart = true
+        selectionChosenSound()
         loadingHeader();
         playGameMusic()
         
+        
     })
+
+    function selectionChosenSound() {
+        let selectionChosenAudio = new Audio('selectionchosen.wav')
+        selectionChosenAudio.play()
+        selectionChosenAudio.setAttribute("id", "selectionChosenAudio")
+    }
 
     function playGameMusic() {
         let gameAudio = new Audio('game.mp3')
@@ -128,40 +143,84 @@ const gameBoard = (() => {
 
         ['click','keypress',].forEach( evt => 
             startGame.addEventListener(evt, function(){
-               // gameBoard1.style.display = 'grid';
+                selectionChosenSound()
+                // gameBoard1.style.display = 'grid';
                 startingScreen.style.display = 'none';
                 startAnimation.style.display = 'none';
+                
                 loadingCharacters()
+                
             })
         );
 
         ['click','keypress',].forEach( evt => 
             TORIEL.addEventListener(evt, function(){
+                selectionChosenSound()
                 player1.character = 'Toriel'
-                console.log(player1.character)
+                startAnimation.style.display = "none"
+                characterSelection.style.display = "none"  
+                chosenCharacter()
+                torielPicture.classList.add('transition')
+                torielDialogue.classList.add('transition')
+                torielDialogue.style.display = 'flex'
+                characterDialogue()
             })
         );
 
         ['click','keypress',].forEach( evt => 
             PAPYRUS.addEventListener(evt, function(){
+                selectionChosenSound()
                 player1.character = 'Papyrus'
-                console.log(player1.character)
+                startAnimation.style.display = "none"
+                characterSelection.style.display = "none"
+                chosenCharacter()
+                papyrusPicture.classList.add('transition')
+                papyrusDialogue.classList.add('transition')
+                papyrusDialogue.style.display = 'flex'
+                characterDialogue()
+                
             })
         );
 
         ['click','keypress',].forEach( evt => 
             UNDYNE.addEventListener(evt, function(){
+                selectionChosenSound()
                 player1.character = 'Undyne'
-                console.log(player1.character)
+                startAnimation.style.display = "none"
+                characterSelection.style.display = "none"
+                chosenCharacter()
+                undynePicture.classList.add('transition')
+                undyneDialogue.classList.add('transition')
+                undyneDialogue.style.display = 'flex'
+                characterDialogue()
+                
+                
             })
         );
+
+/*
+        function resolveAfter4Seconds() {
+            return new Promise(resolve => {
+              setTimeout(() => {
+                resolve('resolved');
+              }, 4000);
+            });
+          }
+          
+          async function asyncCall3() {
+            console.log('calling');
+            await resolveAfter4Seconds();
+            console.log('called')
+            undynePicture.classList.add('transition')
+          }
+*/
 
        
         function resolveAfter12Seconds() {
             return new Promise(resolve => {
               setTimeout(() => {
                 resolve('resolved');
-              }, 12000);
+              }, 2000);
             });
           }
           
@@ -190,7 +249,134 @@ const gameBoard = (() => {
             
             
           }
+
+  
+function characterDialogue() {
+        if (player1.character === 'Undyne') {
+            var header = document.getElementById('undynedialogue');
+            
+            
+        
+        var typewriter = new Typewriter(header, {
+            delay: 75
+        });
+
+        
+        typewriter.typeString('')
+        .changeCursor(' ')
+        .pauseFor(10000)
+        .typeString(`Hello. You seem rather weak and frail. It's alright, I've trained people like you before. Just to be clear: I make the rules around here.`)
+        .start()
+        characterStory();
+                     
+    } else if (player1.character === 'Papyrus'){
+        var header = document.getElementById('papyrusdialogue');
+            
+            
+        
+        var typewriter = new Typewriter(header, {
+            delay: 75
+        });
+
+        
+        typewriter.typeString('')
+        .changeCursor(' ')
+        .pauseFor(15500)
+        .typeString(`HEY! I'm Papyrus, nice to meet you! You're coming with me?! That's great, and don't worry I don't bite!! Just joking, sometimes I bite! Kidding! Aren't I the worst?`)
+        .start()
+        characterStory();
+    } 
+}
+
+
+
+
           
+function chosenCharacter() {
+    startAnimation.style.display = ""
+    var header = document.getElementById('animate');
+    
+    
+
+var typewriter = new Typewriter(header, {
+    delay: 75
+});
+
+typewriter.typeString(`YOU'VE CHOSEN ${player1.character.toUpperCase()}`)
+.pauseFor(250)
+.start()
+.changeCursor(' ')
+characterStory();
+}    
+
+function characterStory(){
+    var header = document.getElementById('animate2')
+    var typewriter = new Typewriter(header, {
+        delay: 35
+    })
+    if (player1.character === 'Papyrus') {
+    playerCharacterIcon.style.display = "flex"
+    undynePicture.style.display = "none"
+    papyrusPicture.style.display = "flex"
+    torielPicture.style.display = "none"
+    typewriter.typeString('Papyrus is a flamboyant skeleton man. He likes materialistic things and can be rather obnoxious, but he is quite lonely. All he wants in life is to join the Royal Guard for friendship and so he can afford a new car. He chooses to go on a journey to the promised land for an opportunity to join the forces. His favorite color is dark purple.')
+    .pauseFor(250)
+    .start()
+    .changeCursor(' ')
+} else if (player1.character === 'Toriel') {
+    playerCharacterIcon.style.display = "flex"
+    undynePicture.style.display = "none"
+    papyrusPicture.style.display = "none"
+    torielPicture.style.display = "flex"
+    typewriter.typeString('Toriel is a loving mother and has adopted many orphaned children. In her free time, she enjoys writing and cooking. She is going on a journey to the promised land in order to find her lost son that she did not see for years. Her favorite color is green.')
+    .pauseFor(250)
+    .start()
+    .changeCursor(' ')
+} else if (player1.character === 'Undyne') {
+    playerCharacterIcon.style.display = "flex"
+    undynePicture.style.display = "flex"
+    papyrusPicture.style.display = "none"
+    torielPicture.style.display = "none"
+    typewriter.typeString('Undyne is a passionate battle-hardened teacher and mentor. She is going on a journey to the promised land in order to a deliver a letter to a battle buddy. Her favorite color is orange.')
+    .pauseFor(250)
+    .start()
+    .changeCursor(' ')
+}
+}
+
+
+/*
+function torielChosen() {
+var header = document.getElementById('animate');
+
+var typewriter = new Typewriter(header, {
+    
+});
+
+typewriter.typeString(`YOU'VE CHOSEN ${player1.character}`)
+.pauseFor(250)
+.start()
+.changeCursor(' ')
+} 
+
+function papyrusChosen() {
+
+}
+
+function undyneChosen() {
+
+}
+
+
+*/
+
+
+
+
+
+
+
+
           
 function loadingCharacters() {
     
