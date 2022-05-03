@@ -32,15 +32,7 @@ const gameBoard = (() => {
    //     console.log(player1.character)
   //  })
   
-    PAPYRUS.addEventListener('click', function(){
-        player1.character = 'Papyrus'
-        console.log(player1.character)
-    })
 
-    UNDYNE.addEventListener('click', function(){
-        player1.character = 'Undyne'
-        console.log(player1.character)
-    })
 
     initButton.addEventListener('click',function(){
         startAnimation.style.display = ''
@@ -86,7 +78,7 @@ const gameBoard = (() => {
         constructor() {
           //Get the first element of the list and set it as the current
           //TODO: if the DOM doesn't get updated it is also possible to store the .move HTML elements within this instance
-          this.current = document.getElementsByClassName("move")[0];
+          this.current = document.getElementsByClassName("move")[1];
           
           //initially set the first as focus
           this.current.focus();
@@ -196,11 +188,12 @@ const gameBoard = (() => {
             characterSelection.style.display = 'grid'
             characterSelection.classList.add('transition')
             
+            
           }
           
           
 function loadingCharacters() {
-
+    
     asyncCall2()
 
     instructions.style.display = 'flex'
