@@ -33,6 +33,8 @@ const gameBoard = (() => {
     const undyneDialogue = document.querySelector('#undynedialogue')
     const papyrusDialogue = document.querySelector('#papyrusdialogue')
     const torielDialogue = document.querySelector('#torieldialogue')
+    const credits = document.querySelector('#credits')
+    const continueButton = document.querySelector('#continuebutton')
     console.log(player1.character)
    // TORIEL.addEventListener('click', function(){
     //    player1.character = 'Toriel'
@@ -147,6 +149,7 @@ const gameBoard = (() => {
                 // gameBoard1.style.display = 'grid';
                 startingScreen.style.display = 'none';
                 startAnimation.style.display = 'none';
+                credits.style.display = 'none'
                 
                 loadingCharacters()
                 

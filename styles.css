@@ -40,7 +40,7 @@ h2 {
     font-size: 1em;
 }
 
-.credits {
+#credits {
     text-align: center;
     font-size: .5em;
     position: fixed;
@@ -63,10 +63,13 @@ h2 {
 
 #toriel2 {
     display: none;
+    align-self: center;
+    
 }
 
 #papyrus2 {
     display: none;
+   
 }
 
 #undyne2 {
@@ -75,6 +78,7 @@ h2 {
 
 #playerCharacter {
     display: none; /* should be none */
+    
     
 }
 
@@ -92,7 +96,7 @@ h2 {
     cursor: crosshair;
 }
 
-#startGame, #options, #initButton, #character1, #character2 {
+#startGame, #options, #initButton, #character1, #character2, #continuebutton {
     display: flex;
     justify-content: center;
     background: black;
@@ -148,6 +152,8 @@ h2 {
     justify-content: center;
     align-items: center;
 }
+
+
 
 .characters {
     display: flex;
@@ -211,6 +217,10 @@ h2 {
 
 }
 
+#initButton {
+    font-size: 3em
+}
+
 #undynedialogue {
     display: none;
     flex-wrap: wrap;
@@ -222,6 +232,7 @@ h2 {
     display: none;
     flex-wrap: wrap;
     width: 33%;
+    align-self: center;
     
 }
 
