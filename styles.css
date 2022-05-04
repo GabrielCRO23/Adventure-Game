@@ -37,6 +37,7 @@ body {
     background-color: black;
     width: 100vw;
     height: 100vh;
+    cursor: crosshair;
     
     
     background-size:     cover;                      /* <------ */
@@ -347,12 +348,12 @@ h2 {
 
 @-webkit-keyframes moverX {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-1000px); }
+    100% { transform: translateX(-500px); }
 }
 
 @keyframes moverX {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-1000px); }
+    100% { transform: translateX(-500px); }
 }
 
 
@@ -393,9 +394,14 @@ h2 {
 
 
 #sansdialogue {
+    
     display: none;
+    flex-wrap: wrap;
+    
     color: red;
     margin-left: auto;
+    
+    width: 33%;
     font-family: 'Undertale Sans';
     
     
@@ -419,41 +425,3 @@ h2 {
   }
   
  
-  /*
-  @-moz-keyframes FadeIn {
-    0% {
-      opacity: 0;
-
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
-  @-webkit-keyframes FadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
-  @-o-keyframes FadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  
-  @-ms-keyframes FadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  */

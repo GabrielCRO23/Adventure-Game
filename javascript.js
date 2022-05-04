@@ -418,7 +418,7 @@ function adventurePartTwo() {
 function adventurePartThree() {
     startAnimation2.style.display = ""
     var header = document.getElementById('animate2');
-    var ofs = 0
+   
 
 
     
@@ -444,15 +444,71 @@ setTimeout(() => {
         sansPicture.classList.add('mover')
         sansPicture.classList.add('moverX')
         sansDialogue.classList.add('flash')
-        sansPicture.classList.add('moverX')
+        
         startAnimation2.classList.add('blink')
         quoteContainer.style.display = "flex"
         sansDialogue.style.display = "flex"
         startAnimation2.style.display = "none"
+        setTimeout(() => {
+            sansInitialDialogue()
+          }, "4200")
   }, "10000")
 }  
 
+function sansInitialDialogue3() {
+    sansDialogue.style.display = "flex"
+    var header = document.getElementById('sansdialogue');
 
+    var typewriter = new Typewriter(header, {
+        delay: 70
+    });
+
+    
+    typewriter.typeString(`you must defeat me three times IN A ROW in the infamously deadly game of...`)
+    .changeCursor(' ')
+    .pauseFor(800)
+    .typeString(`TIC...TAC...`)
+    .pauseFor(800)
+    .typeString(`and TOE. I'll even let you have the first moves`)
+    .start()
+}
+
+
+function sansInitialDialogue2() {
+    sansDialogue.style.display = "flex"
+    var header = document.getElementById('sansdialogue');
+
+    var typewriter = new Typewriter(header, {
+        delay: 70
+    });
+
+    
+    typewriter.typeString(`Any soul, living or dead, that wishes to tread these lands MUST first pass a series of tests to be considered worthy of these sacred lands. If you wish to proceed any further...`)
+    .changeCursor(' ')
+    .start()
+    setTimeout(() => {
+        sansInitialDialogue3()
+      }, "16000")
+}
+
+function sansInitialDialogue() {
+    var header = document.getElementById('sansdialogue');
+    sansPicture.classList.remove('moverX')
+    sansPicture.classList.remove('flash')
+            
+        
+        var typewriter = new Typewriter(header, {
+            delay: 50
+        });
+       // STOP RIGHT THERE ${player1.character}! I am Sans, gatekeeper of the promised land, protector of the underworld, emporer of the day, defender of the nightman.
+        typewriter.typeString('')
+        .changeCursor(' ')
+        .typeString(`STOP RIGHT THERE ${player1.character}! I am Sans, gatekeeper of the promised land, protector of the underworld, emporer of the day, defender of the nightman.`)
+        .start()
+        setTimeout(() => {
+            sansInitialDialogue2()
+          }, "11000")
+}
 
   
 function characterDialogue() {
@@ -487,7 +543,7 @@ function characterDialogue() {
         .changeCursor(' ')
         .pauseFor(16575)
         
-        .typeString(`HEY! I'm Papyrus, nice to meet ME! Haha. You're coming with me?! That's great, and don't worry I don't bite!! Just joking, sometimes I bite!`)
+        .typeString(`HEY! I'm Papyrus, nice to meet ME! Haha. You're coming with me?! That's great, and don't worry I don't bite!! Just joking, sometimes I bite.`)
         .pauseFor(1000)
         .typeString(` Kidding again! Aren't I the worst?`)
         .start()
