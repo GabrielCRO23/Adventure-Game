@@ -19,8 +19,10 @@ const gameBoard = (() => {
     const startingScreen = document.querySelector('#startingScreen')
     const initButton = document.querySelector('#initButton')
     const startAnimation = document.querySelector('#animate')
+    const startAnimation2 = document.querySelector('#animate2')
     const characterSelection = document.querySelector('#characterSelection')
     const instructions = document.querySelector('#info2')
+    const info = document.querySelector('#info')
  //   const CHARACTER1 = document.querySelector('#character1')
   //  const CHARACTER2 = document.querySelector('#character2')
     const TORIEL = document.querySelector('#toriel')
@@ -45,6 +47,8 @@ const gameBoard = (() => {
 
     initButton.addEventListener('click',function(){
         startAnimation.style.display = ''
+        startGame.style.display = "flex"
+        options.style.display = "flex"
         initButton.style.display = "none"
         gameStart = true
         selectionChosenSound()
@@ -95,7 +99,7 @@ const gameBoard = (() => {
         constructor() {
           //Get the first element of the list and set it as the current
           //TODO: if the DOM doesn't get updated it is also possible to store the .move HTML elements within this instance
-          this.current = document.getElementsByClassName("move")[1];
+          this.current = document.getElementsByClassName("move")[0];
           
           //initially set the first as focus
           this.current.focus();
@@ -182,6 +186,7 @@ const gameBoard = (() => {
                 papyrusDialogue.style.display = 'flex'
                 characterDialogue()
                 
+                
             })
         );
 
@@ -197,6 +202,28 @@ const gameBoard = (() => {
                 undyneDialogue.style.display = 'flex'
                 characterDialogue()
                 
+                
+            })
+        );
+
+        ['click','keypress',].forEach( evt => 
+            continueButton.addEventListener(evt, function(){
+                startAnimation.style.display = "none"
+                startAnimation2.style.display = "none"
+                continueButton.style.display = "none"
+                if (player1.character === 'Papyrus') {
+                papyrusDialogue.style.display = "none"
+                papyrusPicture.classList.add('transition')
+                papyrusPicture.classList.add('mover')
+                papyrusDialogue.classList.add('mover')
+                adventurePartOne()
+            } else if (player1.character === 'Undyne') {
+                undyneDialogue.style.display = "none"
+                undynePicture.classList.add('transition')
+            } else if (player1.character === 'Toriel') {
+                torielDialogue.style.display = "none"
+                torielPicture.classList.add('transition')
+            }
                 
             })
         );
@@ -253,6 +280,33 @@ const gameBoard = (() => {
             
           }
 
+
+
+function adventurePartOne() {
+    document.body.style.backgroundImage = "url('backgroundpart33.jpg')";
+    document.body.classList.add('transition')
+    
+    if (player1.character === 'Papyrus') {
+        startAnimation.style.display = ""
+        var header = document.getElementById('animate');
+        
+        
+    
+    var typewriter = new Typewriter(header, {
+        delay: 75
+    });
+    
+    typewriter.typeString(`As ${player1.character} travels into the border of the promised land`)
+    .pauseFor(250)
+    .start()
+    .changeCursor(' ')
+ 
+    
+
+    }     
+}
+
+
   
 function characterDialogue() {
         if (player1.character === 'Undyne') {
@@ -290,9 +344,14 @@ function characterDialogue() {
         .pauseFor(1000)
         .typeString(` Kidding again! Aren't I the worst?`)
         .start()
+        setTimeout(() => {
+            continueButton.style.display = 'flex'
+            continueButton.classList.add('transition')
+          }, "2000")
         
     } 
 }
+
 
 
 
