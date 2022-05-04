@@ -65,10 +65,11 @@ body.transition {
 }
 
 body.flash {
-    animation: blinker2 1s step-start infinite;
+    animation: blinker2 0.5s step-start infinite;
     animation-iteration-count: 10;
     
 }
+
 
 #sans.flash {
     animation: blinker 1s step-start infinite;
@@ -208,6 +209,32 @@ h2 {
     display: none;
 }
 
+#quotecontainer {
+    display: none;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 50px;
+    color: darkred;
+    overflow: hidden;
+    position:relative;
+}
+
+
+#randomquote1, #randomquote2, #randomquote3, #randomquote4  {
+    -webkit-animation: cssAnimation 5s forwards; 
+    animation: cssAnimation 5s forwards;
+}
+@keyframes cssAnimation {
+    0%   {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;}
+}
+@-webkit-keyframes cssAnimation {
+    0%   {opacity: 1;}
+    90%  {opacity: 1;}
+    100% {opacity: 0;}
+}
+
 .blink {
     animation: blinker 1s step-start infinite;
     font-family: Determination Mono;
@@ -308,6 +335,22 @@ h2 {
         animation: mover 2s infinite  alternate;
     
 }
+
+
+
+#sans.moverX {
+    
+    -webkit-animation: moverX 0.5s infinite;
+        animation: moverX 0.5s infinite;
+        animation-iteration-count: 6;
+}
+
+#sansdialogue.flash {
+    animation: blinker2 0.5s step-start infinite;
+    animation-iteration-count: 10;
+    color: darkred
+}
+
 @-webkit-keyframes mover {
     0% { transform: translateY(0); }
     100% { transform: translateY(-30px); }
@@ -316,6 +359,17 @@ h2 {
     0% { transform: translateY(0); }
     100% { transform: translateY(-30px); }
 }
+
+@-webkit-keyframes moverX {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-1000px); }
+}
+
+@keyframes moverX {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-1000px); }
+}
+
 
 #papyrusdialogue.mover {
     -webkit-animation: mover 2s infinite  alternate;

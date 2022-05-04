@@ -42,7 +42,7 @@ const gameBoard = (() => {
     const continueButton = document.querySelector('#continuebutton')
     const readNote = document.querySelector('#readnote')
     const continueButton2 = document.querySelector('#continuebutton2')
-    const blinkbg = document.querySelector('#blink-bg')
+    const quoteContainer = document.querySelector('#quotecontainer')
     console.log(player1.character)
    // TORIEL.addEventListener('click', function(){
     //    player1.character = 'Toriel'
@@ -93,6 +93,12 @@ const gameBoard = (() => {
         let menuAudio = new Audio('menu.wav');
         menuAudio.play();
         menuAudio.setAttribute("id", "menuAudio")
+      }
+
+      function playSansSound() {
+          let sansAudio = new Audio('sansappear.wav')
+          sansAudio.play()
+          sansAudio.setAttribute("id", "sansAudio")
       }
     
     document.onkeydown = function (event) {
@@ -226,6 +232,7 @@ const gameBoard = (() => {
 
         ['click','keypress',].forEach( evt => 
             continueButton.addEventListener(evt, function(){
+                selectionChosenSound()
                 startAnimation.style.display = "none"
                 startAnimation2.style.display = "none"
                 continueButton.style.display = "none"
@@ -248,7 +255,8 @@ const gameBoard = (() => {
 
         ['click','keypress',].forEach( evt => 
             readNote.addEventListener(evt, function(){
-                 noteRead();
+                selectionChosenSound()
+                noteRead();
                  readNote.style.display = "none"
                  console.log(gameAudio)
                 
@@ -257,7 +265,8 @@ const gameBoard = (() => {
 
         ['click','keypress',].forEach( evt => 
             continueButton2.addEventListener(evt, function(){
-                 startAnimation2.style.display = "none"
+                selectionChosenSound()
+                startAnimation2.style.display = "none"
                  continueButton2.style.display = "none"
                  adventurePartThree()
                  if (player1.character === 'Papyrus') {
@@ -425,6 +434,7 @@ typewriter.typeString(`Cold and tired, ${player1.character} starts to see the su
 setTimeout(() => {
     console.log(gameAudio)
         gameAudio.pause()
+        playSansSound()
         playGameMusic2()
         document.body.classList.add('flash')
         document.body.style.backgroundImage = "none";
@@ -432,6 +442,11 @@ setTimeout(() => {
         sansPicture.style.display = "flex"
         sansPicture.classList.add('flash')
         sansPicture.classList.add('mover')
+        sansPicture.classList.add('moverX')
+        sansDialogue.classList.add('flash')
+        sansPicture.classList.add('moverX')
+        startAnimation2.classList.add('blink')
+        quoteContainer.style.display = "flex"
         sansDialogue.style.display = "flex"
         startAnimation2.style.display = "none"
   }, "10000")
