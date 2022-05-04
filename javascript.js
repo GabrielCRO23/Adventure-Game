@@ -43,6 +43,7 @@ const gameBoard = (() => {
     const readNote = document.querySelector('#readnote')
     const continueButton2 = document.querySelector('#continuebutton2')
     const quoteContainer = document.querySelector('#quotecontainer')
+    const respondButton = document.querySelector('#respondbutton')
     console.log(player1.character)
    // TORIEL.addEventListener('click', function(){
     //    player1.character = 'Toriel'
@@ -283,6 +284,14 @@ const gameBoard = (() => {
             })
         );
 
+        ['click','keypress',].forEach( evt => 
+            respondButton.addEventListener(evt, function(){
+                selectionChosenSound()
+                 respondButton.style.display = "none"
+                 firstResponse()
+            })
+        );
+
    
         function resolveAfter12Seconds() {
             return new Promise(resolve => {
@@ -352,6 +361,30 @@ function chooseGender() {
         }
     }
 
+    function firstResponse() {
+        if (player1.character === 'Papyrus') {
+            papyrusDialogue.style.display = "flex"
+            var header = document.getElementById('papyrusdialogue');
+            
+            
+        
+        var typewriter = new Typewriter(header, {
+            delay: 70
+        });
+    
+        
+        typewriter.typeString('')
+        .changeCursor(' ')
+        .pauseFor(500)
+        .typeString(`What...?`)
+        .start()
+        setTimeout(() => {
+            console.log('aayyy')
+            
+          }, "8000")
+    }
+    }
+
     function noteRead() {
         startAnimation2.style.display = ""
         var header = document.getElementById('animate2');
@@ -391,6 +424,8 @@ function playerDialogue1(){
     .start()
     setTimeout(() => {
         continueButton2.style.display = "flex"
+        continueButton2.classList.add('transition')
+        
       }, "8000")
 }
 }
@@ -471,6 +506,10 @@ function sansInitialDialogue3() {
     .pauseFor(800)
     .typeString(`and TOE. I'll even let you have the first moves`)
     .start()
+    setTimeout(() => {
+        respondButton.style.display = "flex"
+        respondButton.classList.add('transition')
+      }, "9000")
 }
 
 

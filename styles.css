@@ -139,7 +139,7 @@ h2 {
     cursor: crosshair;
 }
 
-#startGame, #options, #initButton, #continuebutton, #readnote, #continuebutton2 {
+#startGame, #options, #initButton, #continuebutton, #readnote, #continuebutton2, #respondbutton {
     display: flex;
     justify-content: center;
     background: black;
@@ -175,7 +175,11 @@ h2 {
     display: none;
 }
 
-#startGame:hover, #continuebutton2:focus, #continuebutton2:hover, #options:hover, #startGame:focus, #options:focus, #initButton:hover, #initButton:focus, #continuebutton:hover, #continuebutton:focus, #readnote:focus, #readnote:hover {
+#respondbutton {
+    display: none;
+}
+
+#startGame:hover, #continuebutton2:focus, #continuebutton2:hover, #respondbutton:focus, #respondbutton:hover, #options:hover, #startGame:focus, #options:focus, #initButton:hover, #initButton:focus, #continuebutton:hover, #continuebutton:focus, #readnote:focus, #readnote:hover {
     cursor: crosshair;
     transform: scale(1.0);
     box-shadow: 0 0 20px 1px;
@@ -288,7 +292,7 @@ h2 {
     display: none;
 }
 
-#characterSelection.transition, #continuebutton.transition, #readnote.transition {
+#characterSelection.transition, #continuebutton.transition, #readnote.transition, #continuebutton2.transition, #respondbutton.transition {
     animation-name: FadeIn;
     animation-duration: 3s;
     transition-timing-function: linear;
@@ -410,7 +414,7 @@ h2 {
 
 #sans {
      display: none;
-     margin-left: 0;
+     margin-left: auto;
 }
 
 
