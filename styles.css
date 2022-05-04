@@ -13,6 +13,33 @@
     src: url(DeterminationMonoWeb.ttf)
 }
 
+@font-face {
+    font-family: 'Undertale Papyrus';
+    src: url('papyrus-webfont.eot');
+    src: url('papyrus-webfont.eot?#iefix') format('embedded-opentype'),
+         url('papyrus-webfont.woff2') format('woff2'),
+         url('papyrus-webfont.woff') format('woff'),
+         url('papyrus-webfont.ttf') format('truetype'),
+         url('papyrus-webfont.svg#undertale_papyrusregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Undertale Sans';
+    src: url('sans-webfont.eot');
+    src: url('sans-webfont.eot?#iefix') format('embedded-opentype'),
+         url('sans-webfont.woff2') format('woff2'),
+         url('sans-webfont.woff') format('woff'),
+         url('sans-webfont.ttf') format('truetype'),
+         url('sans-webfont.svg#undertale_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
 
 body {
     display: flex;
@@ -37,17 +64,34 @@ body.transition {
     transition-timing-function: linear;
 }
 
+body.flash {
+    animation: blinker2 1s step-start infinite;
+    animation-iteration-count: 10;
+    
+}
+
+#sans.flash {
+    animation: blinker 1s step-start infinite;
+    animation-iteration-count: 10;
+}
+
 h1{
     text-align: center;
-    left: 50%;
+    left: 50%; 
+    
+
+    
     
     
 }
 
 h2 {
-    text-align: center;
-    left: 50%;
+   text-align: center;
+    
     font-size: 1em;
+    
+   left: 50%;
+    
 }
 
 #credits {
@@ -73,17 +117,19 @@ h2 {
 
 #toriel2 {
     display: none;
-    align-self: center;
+    padding: 5px;
     
 }
 
 #papyrus2 {
     display: none;
+    padding: 5px;
    
 }
 
 #undyne2 {
     display: none;
+    padding: 5px;
 }
 
 #playerCharacter {
@@ -106,7 +152,7 @@ h2 {
     cursor: crosshair;
 }
 
-#startGame, #options, #initButton, #continuebutton {
+#startGame, #options, #initButton, #continuebutton, #readnote, #continuebutton2 {
     display: flex;
     justify-content: center;
     background: black;
@@ -134,8 +180,15 @@ h2 {
     display: none;
 }
 
+#readnote {
+    display: none;
+}
 
-#startGame:hover, #options:hover, #startGame:focus, #options:focus, #initButton:hover, #initButton:focus, #continuebutton:hover, #continuebutton:focus {
+#continuebutton2 {
+    display: none;
+}
+
+#startGame:hover, #continuebutton2:focus, #continuebutton2:hover, #options:hover, #startGame:focus, #options:focus, #initButton:hover, #initButton:focus, #continuebutton:hover, #continuebutton:focus, #readnote:focus, #readnote:hover {
     cursor: crosshair;
     transform: scale(1.0);
     box-shadow: 0 0 20px 1px;
@@ -164,6 +217,13 @@ h2 {
   @keyframes blinker {
     50% {
       opacity: 0;
+    }
+  }
+
+  @keyframes blinker2 {
+    50% {
+      opacity: 0;
+      background-color: red
     }
   }
 
@@ -215,7 +275,7 @@ h2 {
     display: none;
 }
 
-#characterSelection.transition, #continuebutton.transition {
+#characterSelection.transition, #continuebutton.transition, #readnote.transition {
     animation-name: FadeIn;
     animation-duration: 3s;
     transition-timing-function: linear;
@@ -242,13 +302,19 @@ h2 {
     -webkit-animation: mover 2s infinite  alternate;
     animation: mover 2s infinite  alternate;
 }
+
+#sans.mover {
+        -webkit-animation: mover 2s infinite  alternate;
+        animation: mover 2s infinite  alternate;
+    
+}
 @-webkit-keyframes mover {
     0% { transform: translateY(0); }
-    100% { transform: translateY(-20px); }
+    100% { transform: translateY(-30px); }
 }
 @keyframes mover {
     0% { transform: translateY(0); }
-    100% { transform: translateY(-20px); }
+    100% { transform: translateY(-30px); }
 }
 
 #papyrusdialogue.mover {
@@ -259,7 +325,7 @@ h2 {
 
 
 #initButton {
-    font-size: 3em
+    font-size: 3em;
 }
 
 #undynedialogue {
@@ -281,7 +347,8 @@ h2 {
     display: none;
     flex-wrap: wrap;
     width: 33%;
-    color: deeppink
+    color: deeppink;
+    font-family: 'Undertale Papyrus';
     
 }
 
@@ -290,6 +357,7 @@ h2 {
     display: none;
     color: red;
     margin-left: auto;
+    font-family: 'Undertale Sans';
     
     
 }
@@ -310,6 +378,8 @@ h2 {
       opacity: 1;
     }
   }
+  
+ 
   /*
   @-moz-keyframes FadeIn {
     0% {

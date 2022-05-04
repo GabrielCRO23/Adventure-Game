@@ -1,5 +1,6 @@
 
 
+
 const gameBoard = (() => { 
     const playerFactory = (name, symbol, bot, turn, character) => {
         return {name, symbol, bot, turn, character}
@@ -8,7 +9,7 @@ const gameBoard = (() => {
    
 
     player1 = playerFactory('player 1', 'X', false, true, null)
-    player2 = playerFactory('player 2', 'O', false, false, "Tin'pu")
+    player2 = playerFactory('player 2', 'O', false, false, "Sans")
     
     
     let gameStart = false
@@ -31,12 +32,17 @@ const gameBoard = (() => {
     const torielPicture = document.querySelector('#toriel2')
     const papyrusPicture = document.querySelector('#papyrus2')
     const undynePicture = document.querySelector('#undyne2')
+    const sansPicture = document.querySelector('#sans')
+    const sansDialogue = document.querySelector('#sansdialogue')
     const playerCharacterIcon = document.querySelector('#playerCharacter')
     const undyneDialogue = document.querySelector('#undynedialogue')
     const papyrusDialogue = document.querySelector('#papyrusdialogue')
     const torielDialogue = document.querySelector('#torieldialogue')
     const credits = document.querySelector('#credits')
     const continueButton = document.querySelector('#continuebutton')
+    const readNote = document.querySelector('#readnote')
+    const continueButton2 = document.querySelector('#continuebutton2')
+    const blinkbg = document.querySelector('#blink-bg')
     console.log(player1.character)
    // TORIEL.addEventListener('click', function(){
     //    player1.character = 'Toriel'
@@ -54,9 +60,12 @@ const gameBoard = (() => {
         selectionChosenSound()
         loadingHeader();
         playGameMusic()
+       // console.log(gameAudio.getElementById)
         
         
     })
+
+    
 
     function selectionChosenSound() {
         let selectionChosenAudio = new Audio('selectionchosen.wav')
@@ -65,11 +74,20 @@ const gameBoard = (() => {
     }
 
     function playGameMusic() {
-        let gameAudio = new Audio('game.mp3')
+        gameAudio = new Audio('game.mp3')
         gameAudio.play()
         gameAudio.setAttribute("id", "gameAudio")
         gameAudio.loop = true
+        
     }
+
+    function playGameMusic2() {
+        let gameAudio2 = new Audio('hellsong.mp3')
+        gameAudio2.play()
+        gameAudio2.setAttribute("id", "gameAudio2")
+        gameAudio2.loop = true
+    }
+
 
     function playMenuSound() {
         let menuAudio = new Audio('menu.wav');
@@ -228,24 +246,35 @@ const gameBoard = (() => {
             })
         );
 
-/*
-        function resolveAfter4Seconds() {
-            return new Promise(resolve => {
-              setTimeout(() => {
-                resolve('resolved');
-              }, 4000);
-            });
-          }
-          
-          async function asyncCall3() {
-            console.log('calling');
-            await resolveAfter4Seconds();
-            console.log('called')
-            undynePicture.classList.add('transition')
-          }
-*/
+        ['click','keypress',].forEach( evt => 
+            readNote.addEventListener(evt, function(){
+                 noteRead();
+                 readNote.style.display = "none"
+                 console.log(gameAudio)
+                
+            })
+        );
 
-       
+        ['click','keypress',].forEach( evt => 
+            continueButton2.addEventListener(evt, function(){
+                 startAnimation2.style.display = "none"
+                 continueButton2.style.display = "none"
+                 adventurePartThree()
+                 if (player1.character === 'Papyrus') {
+                    papyrusDialogue.style.display = "none"
+                
+                } else if (player1.character === 'Undyne') {
+                    undyneDialogue.style.display = "none"
+                   
+                } else if (player1.character === 'Toriel') {
+                    torielDialogue.style.display = "none"
+                    
+                }
+                
+            })
+        );
+
+   
         function resolveAfter12Seconds() {
             return new Promise(resolve => {
               setTimeout(() => {
@@ -293,18 +322,121 @@ function adventurePartOne() {
         
     
     var typewriter = new Typewriter(header, {
-        delay: 75
+        delay: 70
     });
     
-    typewriter.typeString(`As ${player1.character} travels into the border of the promised land`)
+    typewriter.typeString(`THE BORDER`)
     .pauseFor(250)
     .start()
     .changeCursor(' ')
- 
-    
-
+    setTimeout(() => {
+        adventurePartTwo()
+      }, "3000")
     }     
 }
+
+function chooseGender() {
+    if (player1.character === "Papyrus") {
+        return 'He'
+    } else if (player1.character === "Undyne" || player1.character === "Toriel"){
+         return 'She'
+        }
+    }
+
+    function noteRead() {
+        startAnimation2.style.display = ""
+        var header = document.getElementById('animate2');
+        
+        
+    
+    var typewriter = new Typewriter(header, {
+        delay: 70
+    });
+    
+    typewriter.typeString(`${player1.character} unravels the note, and it reads:`)
+    .pauseFor(750)
+    .typeString(` "THE AIRSPEED VELOCITY OF AN UNLADEN SWALLOW, BOTH EUROPEAN AND AFRICAN, IS 24 MILES PER HOUR"`)
+    .start()
+    .changeCursor(' ')
+    setTimeout(() => {
+        playerDialogue1()
+      }, "8000")
+}
+    
+function playerDialogue1(){
+    if (player1.character === 'Papyrus') {
+        papyrusDialogue.style.display = "flex"
+        var header = document.getElementById('papyrusdialogue');
+        
+        
+    
+    var typewriter = new Typewriter(header, {
+        delay: 70
+    });
+
+    
+    typewriter.typeString('')
+    .changeCursor(' ')
+    .pauseFor(500)
+    .typeString(`Interesting... I should probably remember that!`)
+    .start()
+    setTimeout(() => {
+        continueButton2.style.display = "flex"
+      }, "8000")
+}
+}
+
+function adventurePartTwo() {
+        startAnimation2.style.display = ""
+        var header = document.getElementById('animate2');
+        
+        
+    
+    var typewriter = new Typewriter(header, {
+        delay: 70
+    });
+    
+    typewriter.typeString(`As ${player1.character} travels by foot into the border of the promised land, ${player1.character} is lost and cold in a dark forest. ${chooseGender()} notices a bright, golden and shiny note hidden in a bush near the path ${chooseGender().toLowerCase()} is taking`)
+    .pauseFor(250)
+    .start()
+    .changeCursor(' ')
+    setTimeout(() => {
+        readNote.style.display = 'flex'
+        readNote.classList.add('transition')
+      }, "8000")
+}
+
+function adventurePartThree() {
+    startAnimation2.style.display = ""
+    var header = document.getElementById('animate2');
+    var ofs = 0
+
+
+    
+
+var typewriter = new Typewriter(header, {
+    delay: 70
+});
+
+typewriter.typeString(`Cold and tired, ${player1.character} starts to see the sun begin to rise. This sign of relief is short lived...`)
+.pauseFor(750)
+.start()
+.changeCursor(' ')
+setTimeout(() => {
+    console.log(gameAudio)
+        gameAudio.pause()
+        playGameMusic2()
+        document.body.classList.add('flash')
+        document.body.style.backgroundImage = "none";
+        document.body.style.color = "red";
+        sansPicture.style.display = "flex"
+        sansPicture.classList.add('flash')
+        sansPicture.classList.add('mover')
+        sansDialogue.style.display = "flex"
+        startAnimation2.style.display = "none"
+  }, "10000")
+}  
+
 
 
   
@@ -340,7 +472,7 @@ function characterDialogue() {
         .changeCursor(' ')
         .pauseFor(16575)
         
-        .typeString(`HEY! I'm Papyrus, nice to meet you! You're coming with me?! That's great, and don't worry I don't bite!! Just joking, sometimes I bite!`)
+        .typeString(`HEY! I'm Papyrus, nice to meet ME! Haha. You're coming with me?! That's great, and don't worry I don't bite!! Just joking, sometimes I bite!`)
         .pauseFor(1000)
         .typeString(` Kidding again! Aren't I the worst?`)
         .start()
