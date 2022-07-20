@@ -40,6 +40,7 @@ body {
     cursor: crosshair;
     
     
+
     background-size:     cover;                      /* <------ */
     background-repeat:   no-repeat;
 }
@@ -64,12 +65,7 @@ body.flash {
 
 h1{
     text-align: center;
-    left: 50%; 
-    
-
-    
-    
-    
+    left: 50%;    
 }
 
 h2 {
