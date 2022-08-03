@@ -1,6 +1,6 @@
 Live: https://gabrielcro23.github.io/Adventure-Game/
 
-##Currently only the Papyrus character gets past the character selection screen. Game stops shortly after Sans appears.
+## Currently only the Papyrus character gets past the character selection screen. Game stops shortly after Sans appears.
 
 Undertale-themed text-based adventure game. 
 
